@@ -7,8 +7,16 @@ a {
     text-decoration: none;
 }
 
+h1 {
+    margin-bottom: 0;
+}
+
+h2 {
+    margin-bottom: 0;
+}
+
 h3 {
-    margin: 0;
+    margin-bottom: 0;
 }
 
 body {
@@ -55,7 +63,7 @@ img {
 
 .menu ul {
     list-style-type: none;
-    margin-top: 12vh;
+    margin-top: 8vh;
     padding: 0;
     position: fixed;
     width: 7.3vw;
@@ -129,5 +137,3 @@ img {
         margin-top: 0;
     }
 }
-
-/*TO DO: TRANSPARENTNE BOKI I NIETRANSPARENTNY ŚRODEK*/
