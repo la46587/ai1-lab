@@ -1,0 +1,133 @@
+html {
+    scroll-behavior: smooth;
+}
+
+a {
+    color: snow;
+    text-decoration: none;
+}
+
+h3 {
+    margin: 0;
+}
+
+body {
+    background-color: #313638;
+    color: whitesmoke;
+    font-family: "Trebuchet MS", sans-serif;
+    text-align: justify;
+}
+
+img {
+    position: fixed;
+    width: 24vw;
+    max-width: 24vw;
+    margin-top: 10vh;
+    margin-left: 6px;
+    height: auto;
+    float: left;
+    background-color: orange;
+    padding: 8px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+[class*="col-"] {
+    float: left;
+    padding: 10px;
+    width: 100%;
+}
+
+.header {
+    text-align: center;
+    background-color: darkorange;
+    padding: 16px;
+    font-size: 50px;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin-top: 12vh;
+    padding: 0;
+    position: fixed;
+    width: 7.3vw;
+}
+
+.menu li {
+    text-align: center;
+    font-size: 18px;
+    padding: 4px;
+    margin-bottom: 8px;
+    background-color: orange;
+    color: snow;
+}
+
+.menu li:hover {
+    background-color: orangered;
+}
+
+.footer {
+    background-color: darkorange;
+    color: snow;
+    text-align: center;
+    font-size: 12px;
+    padding: 4px;
+}
+
+@media only screen and (min-width: 600px) {
+    .col-s-1 {width: 8.33%;}
+    .col-s-2 {width: 16.66%;}
+    .col-s-3 {width: 25%;}
+    .col-s-4 {width: 33.33%;}
+    .col-s-5 {width: 41.66%;}
+    .col-s-6 {width: 50%;}
+    .col-s-7 {width: 58.33%;}
+    .col-s-8 {width: 66.66%;}
+    .col-s-9 {width: 75%;}
+    .col-s-10 {width: 83.33%;}
+    .col-s-11 {width: 91.66%;}
+    .col-s-12 {width: 100%;}
+}
+@media only screen and (min-width: 768px) {
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+}
+
+@media screen and (max-width: 767px) {
+    img {display: none;}
+    .menu ul {
+        width: 22vw;
+    }
+}
+
+@media screen and (max-width: 599px) {
+    .menu ul {
+        position: static;
+        width: 100%;
+        margin: 0;
+    }
+
+    h1 {
+        margin-top: 0;
+    }
+}
+
+/*TO DO: TRANSPARENTNE BOKI I NIETRANSPARENTNY ŚRODEK*/
