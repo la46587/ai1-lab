@@ -156,6 +156,7 @@ img.operation {
 @media screen and (max-width: 767px) {
     img {display: none;}
     img.operation {display: flex;}
+    p {margin-right: 0;}
     .menu ul {
         width: 22vw;
     }
