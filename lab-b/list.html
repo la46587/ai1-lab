@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <link rel="stylesheet" type="text/css" href="listStyle.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta charset="utf-8"
+              name="viewport"
+              content="width=device-width, initial-scale=1.0">
+        <title>To-Do List</title>
+    <body>
+        <div class="grid-container">
+            <div class="grid-item header">
+                <h1>Lista Zadań</h1>
+                <label>
+                    <input class="add" type="text" id="add" placeholder="Nazwa zadania...">
+                    <span class="addBtn" onclick="newElement()">+</span>
+
+                    <input class="search" type="text" id="search" placeholder="Wyszukaj...">
+                    <button class="searchBtn" onclick="searchElement()"><i class="fa fa-search"></i></button>
+                </label>
+            </div>
+
+            <div class="grid-item tasks">
+                <ul id="list">
+                    <li class="checked">Kupić mleko</li>
+                    <li>Nasikać na tatę</li>
+                    <li>Podpisać petycję</li>
+                </ul>
+            </div>
+        </div>
+
+        <script src="listScript.js"></script>
+    </body>
+</html>
