@@ -7,25 +7,23 @@
               name="viewport"
               content="width=device-width, initial-scale=1.0">
         <title>To-Do List</title>
+    </head>
     <body>
         <div class="grid-container">
             <div class="grid-item header">
-                <h1>Lista Zadań</h1>
-                <label>
-                    <input class="add" type="text" id="add" placeholder="Nazwa zadania...">
-                    <span class="addBtn" onclick="newElement()">+</span>
-
-                    <input class="search" type="text" id="search" placeholder="Wyszukaj...">
-                    <button class="searchBtn" onclick="searchElement()"><i class="fa fa-search"></i></button>
-                </label>
+                <h1>LISTA ZADAŃ</h1>
+                <label for="search"></label><input class="search" type="text" id="search" placeholder="Wyszukaj...">
+                <button class="searchBtn"><i class="fa fa-search"></i></button>
             </div>
 
             <div class="grid-item tasks">
-                <ul id="list">
-                    <li class="checked">Kupić mleko</li>
-                    <li>Nasikać na tatę</li>
-                    <li>Podpisać petycję</li>
-                </ul>
+                <ul id="list"></ul>
+            </div>
+
+            <div class="grid-item footer">
+                <label for="add"></label><input class="add" type="text" id="add" placeholder="Nowe zadanie...">
+                <button class="addBtn" onclick="Todo.addTask()"><i class="fa fa-plus"></i></button>
+                <label for="addDate"></label><input class="addDate" type="date" id="addDate">
             </div>
         </div>
 

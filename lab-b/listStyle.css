@@ -2,95 +2,80 @@
     box-sizing: border-box;
 }
 
+html {
+    height: 100%;
+}
+
 body {
-    margin: 0;
+    margin: auto;
     font-family: "tablet-gothic", verdana, arial, sans-serif;
-    background-color: #333;
+    background-color: #1B262C;
+    max-width: max-content;
+    min-height: 100%;
+    display: flex;
+    height: 100%;
+    overflow: hidden;
 }
 
 .grid-container{
     display: grid;
-    background-color: darkgray;
-    margin: 20px 300px 0;
+    grid-template-rows: auto 1fr auto;
+    background-color: #BBE1FA;
+    margin: 20px 20px;
     padding: 10px;
     border-radius: 20px;
     gap: 10px;
 }
 
 .grid-item {
-    background-color: lightskyblue;
+    background-color: #3282B8;
     border-radius: 20px;
 }
 
 .header {
     grid-column: 1 / 3;
     grid-row: 1;
-    background-color: lightcoral;
+    background-color: #0F4C75;
+    max-height: 248px;
+    color: snow;
     padding: 20px;
     text-align: center;
     font-size: 30px;
 }
 
 h1 {
-    margin: 0 0 20px;
+    margin: 0 200px 20px 200px;
     padding: 0;
-}
-
-input.add {
-    margin: 0;
-    border: none;
-    border-radius: 20px 0 0 20px;
-    width: 75%;
-    padding: 10px;
-    float: left;
-    font-size: 16px;
-}
-
-.addBtn {
-    padding: 10px;
-    width: 25%;
-    background: #d9d9d9;
-    color: black;
-    float: left;
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-    border-radius: 0 20px 20px 0;
-}
-
-.addBtn:hover {
-    background-color: #bbb;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: #1B262C;
 }
 
 input.search {
-    margin-top: 20px;
-    margin-left: 14vw;
     border: none;
     border-radius: 20px 0 0 20px;
-    width: 35%;
+    width: 75%;
+    margin-left: 1%;
     padding: 10px;
     float: left;
     font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input.search:focus {
+    background: lightgray;
 }
 
 .searchBtn {
-    margin-top: 20px;
     padding: 10px;
-    width: 15%;
+    width: 22%;
     border: none;
     background: dodgerblue;
     color: snow;
     float: left;
     text-align: center;
     font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
     border-radius: 0 20px 20px 0;
-}
-
-.searchBtn:hover {
-    background: royalblue;
 }
 
 .tasks {
@@ -98,30 +83,88 @@ input.search {
     grid-row: 2;
     text-align: left;
     font-size: 18px;
+    overflow: scroll;
 }
 
 ul {
     margin: 0;
-    padding: 20px;
+    padding: 10px 20px;
 }
 
 ul li {
-    cursor: pointer;
     position: relative;
-    padding: 12px 8px 12px 40px;
+    padding: 12px 8px 12px 16px;
     background: #eee;
     list-style-type: none;
     transition: 0.2s;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
     border-radius: 30px;
     margin: 5px;
 }
 
+.check {
+    position: absolute;
+    float: left;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    color: #1B262C;
+    left: 0;
+    top: 0;
+    width: 6%;
+    padding: 15px;
+    border-radius: 30px;
+}
+
+.check:hover {
+    background-color: #1B262C;
+    color: snow;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+p {
+    margin: 0 0 0 40px;
+    padding: 0;
+    cursor: pointer;
+    width: 72%;
+    overflow: scroll;
+}
+
+input.editPara {
+    margin: 0 0 0 40px;
+    padding: 0;
+    outline: none;
+    border: none;
+    background: rgba(0, 0, 0, 0);
+    font-size: 18px;
+    width: 72%;
+}
+
+time {
+    position: absolute;
+    display: inline-block;
+    top: 25%;
+    right: 7%;
+    cursor: pointer;
+}
+
+input[type="date"].editDate {
+    position: absolute;
+    display: inline-block;
+    top: 28%;
+    right: 7%;
+    background-color: rgba(0, 0, 0, 0);
+    width: 16%;
+    font-size: 16px;
+    border: none;
+    outline: none;
+}
+
+input[type="date"].editDate::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+
 ul li:nth-child(odd) {
-    background: #d3d3d3;
+    background: #cccccc;
 }
 
 ul li:hover {
@@ -132,30 +175,95 @@ ul li.checked {
     background: #696969;
     color: #fff;
     text-decoration: line-through;
-}
-
-ul li.checked::before {
-    content: ' ';
-    position: absolute;
-    border-color: #fff;
-    border-style: solid;
-    border-width: 0 2px 2px 0;
-    top: 12px;
-    left: 20px;
-    transform: rotate(45deg);
-    height: 15px;
-    width: 7px;
+    transition: 0.2s;
 }
 
 .close {
     position: absolute;
+    float: right;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    color: #1B262C;
     right: 0;
     top: 0;
-    padding: 12px 16px 12px 16px;
+    width: 6%;
+    padding: 15px;
     border-radius: 30px;
 }
 
 .close:hover {
-    background-color: lightcoral;
+    background-color: indianred;
     color: snow;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.footer {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    grid-column: 1 / 3;
+    grid-row: 3;
+    background-color: #0F4C75;
+    font-size: 12px;
+    min-height: 72px;
+}
+
+input.add {
+    border: none;
+    border-radius: 20px 0 0 20px;
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input.add:focus {
+    background: lightgray;
+}
+
+
+.addBtn {
+    padding: 10px;
+    width: 16%;
+    border: none;
+    background: dodgerblue;
+    color: snow;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 0 20px 20px 0;
+}
+
+.addBtn:hover {
+    background: steelblue;
+}
+
+input[type="date"].addDate {
+    margin-left: 1%;
+    background-color: dodgerblue;
+    width: 17%;
+    font-size: 16px;
+    color: snow;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    transition: 0.3s;
+}
+
+input[type="date"].addDate:hover {
+    background: steelblue;
+}
+
+input[type="date"].addDate::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 560px) {
+    h1 { font-size: 34px; }
+    .header { max-height: 208px; }
 }
