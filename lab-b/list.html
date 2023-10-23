@@ -12,7 +12,7 @@
         <div class="grid-container">
             <div class="grid-item header">
                 <h1>LISTA ZADAŃ</h1>
-                <label for="search"></label><input class="search" type="text" id="search" placeholder="Wyszukaj...">
+                <label for="search"></label><input class="search" type="text" id="search" autocomplete="off" oninput="Todo.getFilteredTasks()" placeholder="Wyszukaj...">
                 <button class="searchBtn"><i class="fa fa-search"></i></button>
             </div>
 

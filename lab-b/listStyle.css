@@ -91,7 +91,7 @@ ul {
     padding: 10px 20px;
 }
 
-ul li {
+li {
     position: relative;
     padding: 12px 8px 12px 16px;
     background: #eee;
@@ -127,6 +127,10 @@ p {
     cursor: pointer;
     width: 72%;
     overflow: scroll;
+}
+
+mark {
+    background: lightblue;
 }
 
 input.editPara {
