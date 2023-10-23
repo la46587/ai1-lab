@@ -4,6 +4,7 @@ let Todo = {
     status: [],
     term: '',
     draw: function() {
+        Todo.sortList();
         const ul = document.getElementById('list');
         ul.innerHTML = '';
         for (let i = 0; i < Todo.tasks.length; i++) {
@@ -131,6 +132,41 @@ let Todo = {
                 alert('Data nie może być z przeszłości.');
         } else
             alert('Treść zadania musi mieć między 3 a 255 znaków i nie może zaczynać ani kończyć się spacją.');
+    },
+    sortList: function() {
+        const tmpDate = Todo.date.slice().sort()
+        const limitlessDate = [];
+        const limitlessTasks = [];
+        const limitlessStatus = [];
+        for (let i = 0; i < Todo.date.length; i++) {
+            if (Todo.date[i] === 'bezterminowe') {
+                limitlessDate.push(Todo.date[i]);
+                limitlessTasks.push(Todo.tasks[i]);
+                limitlessStatus.push(Todo.status[i]);
+                Todo.date.splice(i, 1);
+                Todo.tasks.splice(i, 1);
+                Todo.status.splice(i, 1);
+                i--;
+            }
+        }
+        const tmpTasks = [];
+        const tmpStatus = [];
+        for (let i = 0; i < Todo.date.length; i++) {
+            for (let j = 0; j < Todo.date.length; j++) {
+                if (tmpDate[i] === Todo.date[j]) {
+                    tmpTasks.push(Todo.tasks[j]);
+                    tmpStatus.push(Todo.status[j]);
+                    // Todo.tasks.splice(j, 1);
+                    // Todo.status.splice(j, 1);
+                }
+            }
+        }
+        console.log(Todo.date);
+        console.log(Todo.tasks);
+        console.log(Todo.status);
+        console.log(tmpDate);
+        console.log(tmpTasks);
+        console.log(tmpStatus);
     },
     getFilteredTasks: function() {
 
