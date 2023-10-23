@@ -5,6 +5,7 @@ let Todo = {
     term: '',
     draw: function() {
         Todo.sortList();
+        Todo.getFilteredTasks();
         const ul = document.getElementById('list');
         ul.innerHTML = '';
         for (let i = 0; i < Todo.tasks.length; i++) {
@@ -65,7 +66,7 @@ let Todo = {
             li.appendChild(time);
             time.appendChild(date);
 
-            // Check
+            // Dodanie znacznika statusu
             let checkBtn = document.createElement('button');
             let check = document.createElement('i');
             checkBtn.className = 'check';
@@ -87,7 +88,7 @@ let Todo = {
             li.append(checkBtn);
             checkBtn.append(check);
 
-            // Usunięcie
+            // Usunięcie zadania
             let closeBtn = document.createElement('button');
             let close = document.createElement('i');
             closeBtn.className = 'close';
@@ -110,6 +111,7 @@ let Todo = {
             localStorage.setItem('status', JSON.stringify(Todo.status));
         }
     },
+    // Dodawanie zadania
     addTask: function() {
         const todaysDate = new Date().toJSON().slice(0, 10);
         let inputText = document.getElementById('add');
@@ -133,8 +135,8 @@ let Todo = {
         } else
             alert('Treść zadania musi mieć między 3 a 255 znaków i nie może zaczynać ani kończyć się spacją.');
     },
+    // Sortowanie datami i statusem ukończenia
     sortList: function() {
-        const tmpDate = Todo.date.slice().sort()
         const limitlessDate = [];
         const limitlessTasks = [];
         const limitlessStatus = [];
@@ -149,27 +151,47 @@ let Todo = {
                 i--;
             }
         }
+        const tmpDate = Todo.date.slice().sort();
         const tmpTasks = [];
         const tmpStatus = [];
-        for (let i = 0; i < Todo.date.length; i++) {
-            for (let j = 0; j < Todo.date.length; j++) {
+        for (let i = 0; i < tmpDate.length; i++) {
+            let j = 0
+            for (j; j < Todo.date.length; j++) {
                 if (tmpDate[i] === Todo.date[j]) {
                     tmpTasks.push(Todo.tasks[j]);
                     tmpStatus.push(Todo.status[j]);
-                    // Todo.tasks.splice(j, 1);
-                    // Todo.status.splice(j, 1);
+                    break;
                 }
             }
+            Todo.tasks.splice(j, 1);
+            Todo.date.splice(j, 1);
+            Todo.status.splice(j, 1);
         }
-        console.log(Todo.date);
-        console.log(Todo.tasks);
-        console.log(Todo.status);
-        console.log(tmpDate);
-        console.log(tmpTasks);
-        console.log(tmpStatus);
+        Todo.tasks = tmpTasks.concat(limitlessTasks);
+        Todo.date = tmpDate.concat(limitlessDate);
+        Todo.status = tmpStatus.concat(limitlessStatus);
+
+        const checkedStatus = [];
+        const checkedTasks = [];
+        const checkedDate = [];
+        for (let i = 0; i < Todo.status.length; i++) {
+            if (Todo.status[i] === 'checked') {
+                checkedTasks.push(Todo.tasks[i]);
+                checkedDate.push(Todo.date[i]);
+                checkedStatus.push(Todo.status[i]);
+                Todo.tasks.splice(i, 1);
+                Todo.date.splice(i, 1);
+                Todo.status.splice(i, 1);
+                i--;
+            }
+        }
+        Todo.tasks = Todo.tasks.concat(checkedTasks);
+        Todo.date = Todo.date.concat(checkedDate);
+        Todo.status = Todo.status.concat(checkedStatus);
     },
     getFilteredTasks: function() {
-
+        let inputSearch = document.getElementById('search');
+        // console.log(inputSearch.value);
     },
     getFocus: function(id) {
         document.getElementById(id).focus();
