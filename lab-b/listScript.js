@@ -117,7 +117,7 @@ let Todo = {
             localStorage.setItem('date', JSON.stringify(Todo.date));
             localStorage.setItem('status', JSON.stringify(Todo.status));
         }
-        if (Todo.term.value)
+        if (Todo.term.value.length >= 2)
             Todo.getFilteredTasks();
     },
     // Dodawanie zadania
@@ -202,24 +202,24 @@ let Todo = {
     // Wyszukiwanie
     getFilteredTasks: function() {
         let filter = Todo.term.value.toUpperCase();
-        let filterNoCap = Todo.term.value.slice();
-        let ul = document.getElementById('list');
-        let li = ul.getElementsByTagName('li');
-        for (let i = 0; i < Todo.tasks.length; i++) {
-            let p = li[i].firstChild;
-            let pText = p.innerHTML;
-            if (Todo.tasks[i].toUpperCase().includes(filter)) {
-                li[i].style.display = '';
-                pText = Todo.tasks[i];
-                if (filter !== '')
+        if (filter.length >= 2) {
+            let filterNoCap = Todo.term.value.slice();
+            let ul = document.getElementById('list');
+            let li = ul.getElementsByTagName('li');
+            for (let i = 0; i < Todo.tasks.length; i++) {
+                let p = li[i].firstChild;
+                let pText = p.innerHTML;
+                if (Todo.tasks[i].toUpperCase().includes(filter)) {
+                    li[i].style.display = '';
+                    pText = Todo.tasks[i];
                     pText = Todo.highlight(pText, filterNoCap);
-                li[i].firstChild.innerHTML = pText;
-            } else {
-                li[i].style.display = 'none';
+                    li[i].firstChild.innerHTML = pText;
+                } else {
+                    li[i].style.display = 'none';
+                }
             }
-            if (filter === '')
-                Todo.draw();
-        }
+        } else
+            Todo.draw();
     },
     // Podświetlenie wyszukiwanej frazy
     highlight: function(text, filter) {
