@@ -10,7 +10,7 @@ let Todo = {
         ul.innerHTML = '';
         for (let i = 0; i < Todo.tasks.length; i++) {
             let li = document.createElement('li');
-            li.id = 'listElement'
+            li.id = 'listElement';
             li.className = Todo.status[i];
             ul.appendChild(li);
 
@@ -25,25 +25,26 @@ let Todo = {
                 paraEdit.value = Todo.tasks[i];
                 paraEdit.onblur = function() {
                     if (paraEdit.value === '' || paraEdit.value.length < 3 || paraEdit.value.length > 255 ||
-                    paraEdit.value.charAt(0) === ' ' || paraEdit.value.charAt(paraEdit.value.length - 1) === ' ')
-                        alert('Treść zadania musi mieć między 3 a 255 znaków i nie może zaczynać ani kończyć się spacją.')
+                        paraEdit.value.charAt(0) === ' ' || paraEdit.value.charAt(paraEdit.value.length - 1) === ' ')
+                        alert('Treść zadania musi mieć między 3 a 255 znaków i nie może zaczynać ani kończyć się spacją.');
                     else
                         Todo.tasks[i] = paraEdit.value;
                     li.removeChild(paraEdit);
                     li.appendChild(para);
                     localStorage.setItem('tasks', JSON.stringify(Todo.tasks));
                     Todo.draw();
-                }
+                };
                 li.removeChild(para);
                 li.appendChild(paraEdit);
                 Todo.getFocus('editPara');
-            }
+            };
             li.appendChild(para);
             para.appendChild(text);
 
             // Data i jej edycja
             let time = document.createElement('time');
             let date = document.createTextNode(Todo.date[i]);
+            time.id = 'taskDate';
             time.onclick = function() {
                 const timeEdit = document.createElement('input');
                 timeEdit.className = 'editDate';
@@ -52,27 +53,31 @@ let Todo = {
                 timeEdit.value = Todo.date[i];
                 timeEdit.onblur = function() {
                     if (timeEdit.value === '')
-                        Todo.date[i] = 'bezterminowo'
+                        Todo.date[i] = 'bezterminowo';
                     else
                         Todo.date[i] = timeEdit.value;
                     li.removeChild(timeEdit);
                     li.appendChild(time);
                     localStorage.setItem('date', JSON.stringify(Todo.date));
                     Todo.draw();
-                }
+                };
                 li.removeChild(time);
                 li.appendChild(timeEdit);
                 Todo.getFocus('editDate');
-            }
+            };
             li.appendChild(time);
             time.appendChild(date);
 
             // Dodanie znacznika statusu
             let checkBtn = document.createElement('button');
             let check = document.createElement('i');
+            let checkTime = document.getElementById('taskDate');
             checkBtn.className = 'check';
             checkBtn.onclick = function() {
                 if (li.className === 'unchecked') {
+                    if (checkTime.outerText === 'bezterminowo') {
+                        Todo.date[i] = new Date().toJSON().slice(0, 10);
+                    }
                     Todo.status[i] = 'checked';
                     check.className = 'fa fa-check-square-o';
                     Todo.draw();
@@ -97,7 +102,7 @@ let Todo = {
                 Todo.tasks.splice(i, 1);
                 Todo.date.splice(i, 1);
                 Todo.status.splice(i, 1);
-                
+
                 localStorage.setItem('tasks', JSON.stringify(Todo.tasks));
                 localStorage.setItem('date', JSON.stringify(Todo.date));
                 localStorage.setItem('status', JSON.stringify(Todo.status));
@@ -121,13 +126,13 @@ let Todo = {
         let inputText = document.getElementById('add');
         let inputDate = document.getElementById('addDate');
         if (inputText.value.length >= 3 && inputText.value.length <= 255 && inputText.value.charAt(0) !== ' ' &&
-        inputText.value.charAt(inputText.value.length - 1) !== ' ') {
+            inputText.value.charAt(inputText.value.length - 1) !== ' ') {
             if (inputDate.value >= todaysDate || inputDate.value === ''){
                 Todo.tasks.push(inputText.value);
                 if (inputDate.value === '')
                     Todo.date.push('bezterminowo');
                 else
-                    Todo.date.push(inputDate.value)
+                    Todo.date.push(inputDate.value);
                 Todo.status.push('unchecked');
                 inputText.value = '';
                 inputDate.value = '';
@@ -219,7 +224,7 @@ let Todo = {
     // Podświetlenie wyszukiwanej frazy
     highlight: function(text, filter) {
         let replacement = new RegExp(filter, 'gi');
-        return text.replace(replacement, `<mark>$&</mark>`)
+        return text.replace(replacement, `<mark>$&</mark>`);
     },
     // Focus na polu do wprowadzania
     getFocus: function(id) {
@@ -229,7 +234,7 @@ let Todo = {
     loseFocus: function(id) {
         document.getElementById(id).blur();
     }
-}
+};
 
 // Dodawanie zadania i daty enterem
 const addTextField = document.getElementById('add');
