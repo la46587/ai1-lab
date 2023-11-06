@@ -1,10 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="pl">
+    <head>
+        <link rel="stylesheet" type="text/css" href="mapStyle.css">
+        <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
+        <script type="text/javascript" src="https://rawgit.com/d3/d3-plugins/master/hexbin/hexbin.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css">
+        <script src="https://rawgit.com/mapbox/leaflet-image/gh-pages/leaflet-image.js"></script>
+        <meta charset="utf-8"
+              name="viewport"
+              content="width=device-width, initial-scale=1.0">
+        <title>Map Puzzle</title>
+    </head>
+    <body>
+<!--        <div class="grid-container">-->
+<!--            <div class="map">-->
+<!--                <button class="mapBtn" onclick="getLocation()">Udostępnij lokalizację</button>-->
+<!--                <button class="mapBtn" onclick="generateImage()">Pobierz mapę</button>-->
+<!--                <p id="loc"></p>-->
+<!--            </div>-->
+<!--    -->
+<!--            <div class="puzzle">-->
+<!--                <p>puzzle</p>-->
+<!--            </div>-->
+<!--    -->
+<!--            <div class="elements">-->
+<!--                <p>elements</p>-->
+<!--            </div>-->
+<!--        </div>-->
 
-</body>
+        <div id="map"></div>
+            <button class="mapBtn" onclick="getLocation()">Udostępnij lokalizację</button>
+            <button class="mapBtn" onclick="generateImage()">Pobierz mapę</button>
+            <p id="loc"></p>
+        <div id="puzzle">
+            <p>puzzle</p>
+        </div>
+        <div id="elements">
+            <p>elements</p>
+        </div>
+        <script src="mapScript.js"></script>
+    </body>
 </html>

@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100vh;
+}
+
+body {
+    background: #333333;
+    color: snow;
+}
+
+.grid-container {
+    display: grid;
+    grid-template:
+        'map map map puzzle puzzle puzzle'
+        'map map map puzzle puzzle puzzle'
+        'map map map puzzle puzzle puzzle'
+        'elements elements elements elements elements elements';
+    background-color: red;
+    padding: 10px;
+}
+
+#map {
+    width: 600px;
+    height: 400px;
+    border: 8px solid #696969;
+    border-radius: 20px;
+}
+
+#puzzle {
+
+}
+
+#elements {
+
+}
+
+button.mapBtn {
+    font-size: 18px;
+}
