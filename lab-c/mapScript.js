@@ -14,10 +14,10 @@ const osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
 map = new L.Map('map', {
     layers: [osm],
     center: new L.LatLng(center[0], center[1]),
-    zoom: 7
+    zoom: 14
 });
 
-var options = {
+const options = {
     radius: 12,
     opacity: 0.5,
     duration: 500,
@@ -34,11 +34,11 @@ var options = {
     valueCeil: undefined
 };
 
-var hexLayer = L.hexbinLayer(options).addTo(map)
+const hexLayer = L.hexbinLayer(options).addTo(map)
 hexLayer.colorScale().range(['white', 'blue']);
 
-var latFn = d3.random.normal(center[0], 1);
-var longFn = d3.random.normal(center[1], 1);
+const latFn = d3.random.normal(center[0], 1);
+const longFn = d3.random.normal(center[1], 1);
 
 function generateData() {
     const data = [];
@@ -61,13 +61,14 @@ function getOverlay() {
     svg.style("margin-left", null);
     svg.attr("height", null);
     svg.attr("width", null);
-    var svgStr = serializer.serializeToString(svg.node());
+    let svgStr = serializer.serializeToString(svg.node());
 
-    img.src = 'data:image/svg+xml;base64,'+window.btoa(svgStr);
+    img.src = 'data:image/svg+xml;base64,' + window.btoa(svgStr);
 
     return img;
 }
 
+// Generowanie obrazu puzzli
 function generateImage() {
     leafletImage(map, function(err, canvas) {
 
@@ -90,8 +91,8 @@ function generateImage() {
         img.width = dimensions.x;
         img.height = dimensions.y;
         img.src = canvas.toDataURL();
-        document.getElementById('images').innerHTML = '';
-        document.getElementById('images').appendChild(img);
+        document.getElementById('puzzle').innerHTML = '';
+        document.getElementById('puzzle').appendChild(img);
     });
 }
 
@@ -103,11 +104,14 @@ function getLocation() {
     }
 }
 
-
+// Pobranie lokalizacji
 function showPosition(position) {
-    usrLoc.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+    let newLat = position.coords.latitude;
+    let newLng = position.coords.longitude;
+    map.setView([newLat, newLng], 18);
 }
 
+// Błędy lokalizacji
 function showError(error) {
     switch(error.code) {
         case error.PERMISSION_DENIED:
