@@ -9,19 +9,10 @@ var __webpack_exports__ = {};
 var styles = ['styles/responsive.css', 'styles/alternative.css', 'styles/empty.css'];
 var footer = document.getElementById('links');
 var style = document.getElementById('currentStyle');
-function initFunction() {
+function addStyles() {
   var _loop = function _loop() {
     var link = document.createElement('a');
-    switch (i) {
-      case 0:
-        link.textContent = "Styl responsywny";
-        break;
-      case 1:
-        link.textContent = "Styl alternatywny";
-        break;
-      case 2:
-        link.textContent = "Bez CSS";
-    }
+    link.textContent = "Styl nr ".concat(i + 1);
     link.href = styles[i];
     link.addEventListener("click", function (event) {
       event.preventDefault();
@@ -39,6 +30,6 @@ function initFunction() {
     _loop();
   }
 }
-initFunction();
+addStyles();
 /******/ })()
 ;

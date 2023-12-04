@@ -1,5 +1,16 @@
+* {
+    box-sizing: border-box;
+}
+
 html {
     scroll-behavior: smooth;
+}
+
+body {
+    background-color: #313638;
+    color: whitesmoke;
+    font-family: "Trebuchet MS", sans-serif;
+    text-align: justify;
 }
 
 a {
@@ -31,13 +42,6 @@ p {
     margin-right: 15px;
 }
 
-body {
-    background-color: #313638;
-    color: whitesmoke;
-    font-family: "Trebuchet MS", sans-serif;
-    text-align: justify;
-}
-
 img {
     position: static;
     width: 24vw;
@@ -60,10 +64,6 @@ img.operation {
     margin-top: -8px;
     margin-bottom: -8px;
     flex-shrink: 0;
-}
-
-* {
-    box-sizing: border-box;
 }
 
 [class*="col-"] {

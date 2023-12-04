@@ -2,19 +2,10 @@ const styles: string[] = ['styles/responsive.css', 'styles/alternative.css', 'st
 const footer = document.getElementById('links') as HTMLDivElement;
 const style= document.getElementById('currentStyle') as HTMLLinkElement;
 
-function  initFunction(){
+function  addStyles(){
     for (let i = 0; i < styles.length; i++){
         const link = document.createElement('a');
-        switch (i) {
-            case 0:
-                link.textContent = `Styl responsywny`;
-                break;
-            case 1:
-                link.textContent = `Styl alternatywny`;
-                break;
-            case 2:
-                link.textContent = `Bez CSS`;
-        }
+        link.textContent = `Styl nr ${i + 1}`;
         link.href = styles[i];
         link.addEventListener("click", (event) => {
             event.preventDefault();
@@ -31,4 +22,4 @@ function  initFunction(){
     }
 }
 
-initFunction();
+addStyles();
