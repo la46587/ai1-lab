@@ -1,0 +1,7 @@
+{
+  "name": "lab-e",
+  "version": "1.0.0",
+  "dependencies": {
+    "laravel-mix": "^6.0.49"
+  }
+}
