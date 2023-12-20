@@ -7,13 +7,13 @@ $title = 'Post List';
 $bodyClass = 'index';
 
 ob_start(); ?>
-    <h1>Posts List</h1>
+    <h1>List of Reviews</h1>
 
-    <a href="<?= $router->generatePath('post-create') ?>">Create new</a>
+    <a href="<?= $router->generatePath('post-create') ?>">Create a new review</a>
 
     <ul class="index-list">
         <?php foreach ($posts as $post): ?>
-            <li><h3><?= $post->getSubject() ?></h3>
+            <li><h3><?= $post->getReviewName() ?></h3>
                 <ul class="action-list">
                     <li><a href="<?= $router->generatePath('post-show', ['id' => $post->getId()]) ?>">Details</a></li>
                     <li><a href="<?= $router->generatePath('post-edit', ['id' => $post->getId()]) ?>">Edit</a></li>

@@ -3,13 +3,14 @@
 /** @var \App\Model\Post $post */
 /** @var \App\Service\Router $router */
 
-$title = "{$post->getSubject()} ({$post->getId()})";
+$title = "{$post->getReviewName()} ({$post->getId()})";
 $bodyClass = 'show';
 
 ob_start(); ?>
-    <h1><?= $post->getSubject() ?></h1>
+    <h1><?= $post->getReviewName() ?></h1>
+    <p><?=$post->getReviewRating()?>/10</p>
     <article>
-        <?= $post->getContent();?>
+        <?= $post->getReviewText();?>
     </article>
 
     <ul class="action-list">

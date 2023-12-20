@@ -3,7 +3,7 @@
 /** @var \App\Model\Post $post */
 /** @var \App\Service\Router $router */
 
-$title = "Edit Post {$post->getSubject()} ({$post->getId()})";
+$title = "Edit Post {$post->getReviewName()} ({$post->getId()})";
 $bodyClass = "edit";
 
 ob_start(); ?>
