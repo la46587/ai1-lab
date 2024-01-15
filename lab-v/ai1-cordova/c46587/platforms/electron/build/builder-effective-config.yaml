@@ -1,0 +1,16 @@
+directories:
+  output: C:\Users\insomnia\Desktop\ai1-cordova\c46587\platforms\electron\build
+  buildResources: C:\Users\insomnia\Desktop\ai1-cordova\c46587\platforms\electron\build-res
+  app: C:\Users\insomnia\Desktop\ai1-cordova\c46587\platforms\electron\www
+appId: io.cordova.hellocordova
+productName: Weather
+electronVersion: 14.2.9
+electronDownload:
+  version: 14.2.9
+win:
+  target:
+    - target: zip
+      arch:
+        - x64
+  icon: installer.png
+files: []

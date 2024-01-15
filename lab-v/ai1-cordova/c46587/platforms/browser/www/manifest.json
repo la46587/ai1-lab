@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Weather",
+  "short_name": "Weather",
+  "version": "io.cordova.hellocordova",
+  "description": "lab-v Weather App",
+  "author": "Aleksander Łysoń",
+  "icons": [],
+  "start_url": "weather.html"
+}
